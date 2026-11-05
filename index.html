@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hcstarrypark 프로젝트</title>
+<meta name="description" content="브라우저에서 바로 실행되는 3D 프로젝트 모음: 관평도서관 3D, Ignition Sequence 로켓 발사 시뮬레이터">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap">
+<style>
+:root{
+  --bg:#f6f3ee; --ink:#1f1d1a; --muted:#6b665e; --card:#fffdf9; --line:#e6e0d6;
+  --lib:#e8902a; --lib-ink:#8a4b0a; --rocket:#2f6fe0; --rocket-ink:#1d4396;
+  --shadow:0 1px 2px rgba(40,30,20,.06),0 10px 30px rgba(40,30,20,.08);
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#121316; --ink:#f1efe9; --muted:#a29d94; --card:#1b1d21; --line:#2c2f35; --lib-ink:#f2b46a; --rocket-ink:#8fb4ff; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:56px 16px 40px}
+header{margin-bottom:36px}
+.eyebrow{font-size:12px;letter-spacing:.24em;color:var(--muted);font-weight:700}
+h1{font-size:clamp(30px,6vw,48px);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin:.25em 0 .35em}
+.lead{color:var(--muted);font-size:16px;max-width:52ch;margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.art{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
+.body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.08em}
+.lib .kicker{color:var(--lib-ink)} .rocket .kicker{color:var(--rocket-ink)}
+h2{font-size:24px;font-weight:900;letter-spacing:-.02em;margin:0;line-height:1.25}
+.desc{margin:0;color:var(--muted);font-size:15px}
+ul.chips{list-style:none;padding:0;margin:2px 0 4px;display:flex;flex-wrap:wrap;gap:6px}
+ul.chips li{font-size:12.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;text-decoration:none;padding:11px 18px;border-radius:999px;border:1px solid transparent;transition:transform .12s ease,background .12s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.lib .btn.play{background:var(--lib);color:#1f1300}
+.rocket .btn.play{background:var(--rocket);color:#fff}
+.btn.repo{border-color:var(--line);color:var(--ink);background:transparent}
+.btn svg{width:16px;height:16px;flex:none}
+footer{margin-top:40px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:18px}
+footer a{color:inherit}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <div class="eyebrow">HCSTARRYPARK · PROJECTS</div>
+    <h1>브라우저에서 바로 하는<br>3D 프로젝트</h1>
+    <p class="lead">설치 없이 링크만 누르면 바로 실행돼요. 키보드와 마우스로 움직여 보세요.</p>
+  </header>
+
+  <section class="grid" aria-label="프로젝트 목록">
+    <article class="card lib">
+      <!-- the library: orange top band, white stone, blue sign over a glass door -->
+      <svg class="art" viewBox="0 0 640 360" role="img" aria-label="관평도서관 3D 건물 외관 그림">
+        <defs><linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fc4ea"/><stop offset="1" stop-color="#e6eef6"/></linearGradient></defs>
+        <rect width="640" height="360" fill="url(#sky1)"/>
+        <g fill="#c9d3dc"><rect x="20" y="90" width="70" height="200"/><rect x="560" y="70" width="70" height="220"/></g>
+        <rect x="0" y="292" width="640" height="68" fill="#8f8a83"/>
+        <rect x="316" y="292" width="8" height="68" fill="#e6b521"/>
+        <rect x="110" y="70" width="440" height="222" fill="#dddcd7"/>
+        <rect x="104" y="64" width="470" height="78" fill="#f19f1d"/>
+        <g stroke="#c47a10" stroke-width="1.2" opacity=".6"><path d="M104 90h470M104 116h470"/><path d="M160 64v26M260 64v26M360 64v26M460 64v26M210 90v26M310 90v26M410 90v26M510 90v26"/></g>
+        <text x="130" y="112" font-family="Noto Sans KR, sans-serif" font-weight="900" font-size="30" fill="#fff">관평도서관</text>
+        <rect x="330" y="80" width="220" height="44" fill="#5b6266"/><g stroke="#e9ebea" stroke-width="2"><path d="M352 80v44M374 80v44M396 80v44M418 80v44M440 80v44M462 80v44M484 80v44M506 80v44M528 80v44"/></g>
+        <rect x="350" y="152" width="170" height="70" fill="#a9c0cd"/><g stroke="#eceeee" stroke-width="3"><path d="M392 152v70M434 152v70M476 152v70M350 187h170"/></g>
+        <rect x="110" y="200" width="150" height="92" fill="#5d6063"/><g stroke="#7a7d80" stroke-width="1"><path d="M110 210h150M110 220h150M110 230h150M110 240h150M110 250h150M110 260h150M110 270h150M110 280h150"/></g>
+        <rect x="236" y="208" width="168" height="84" fill="#b7b5b1"/>
+        <rect x="226" y="198" width="188" height="16" fill="#1f6fd6"/>
+        <text x="320" y="211" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-weight="700" font-size="11" fill="#fff">관 평 도 서 관</text>
+        <rect x="268" y="222" width="104" height="70" fill="#9fb4c2" stroke="#c9cdd1" stroke-width="3"/><path d="M320 222v70" stroke="#c9cdd1" stroke-width="3"/>
+        <g fill="#2e5e8c"><rect x="282" y="250" width="6" height="16"/></g><g fill="#e8902a"><rect x="292" y="252" width="6" height="14"/></g><g fill="#9cc83c"><rect x="340" y="250" width="6" height="16"/></g>
+        <g fill="#3e6a3a"><circle cx="70" cy="250" r="26"/><circle cx="590" cy="244" r="30"/></g><g fill="#5a4636"><rect x="67" y="270" width="6" height="22"/><rect x="587" y="270" width="6" height="22"/></g>
+      </svg>
+      <div class="body">
+        <div class="kicker">3D 도서관 탐방</div>
+        <h2>관평도서관 3D</h2>
+        <p class="desc">대전 관평도서관을 브라우저 속 3D 공간으로 옮겼어요. 문을 열고 들어가 서가의 책 4만여 권을 꺼내 읽고, 사다리를 타고, 사무실에서 직접 책을 쓰고, DVD 코너에서 레이싱 영상을 볼 수 있어요.</p>
+        <ul class="chips"><li>책 읽기</li><li>이동식 사다리</li><li>도어록 사무실</li><li>실시간 CCTV</li><li>DVD 영상 코너</li></ul>
+        <div class="actions">
+          <a class="btn play" href="https://hcstarrypark.github.io/gwanpyeong-library-3d/"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>바로 플레이</a>
+          <a class="btn repo" href="https://github.com/hcstarrypark/gwanpyeong-library-3d"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0z"/></svg>GitHub 저장소</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card rocket">
+      <!-- the launch: pad, tower, rocket on a flame against an early-night sky over the Atlantic -->
+      <svg class="art" viewBox="0 0 640 360" role="img" aria-label="로켓이 발사대에서 솟아오르는 그림">
+        <defs>
+          <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1630"/><stop offset=".7" stop-color="#3b3f7a"/><stop offset="1" stop-color="#e88a5a"/></linearGradient>
+          <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff3c0"/><stop offset=".4" stop-color="#ffb24a" stop-opacity=".8"/><stop offset="1" stop-color="#ff6a1a" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="640" height="360" fill="url(#sky2)"/>
+        <g fill="#fff" opacity=".85"><circle cx="60" cy="40" r="1.4"/><circle cx="140" cy="80" r="1"/><circle cx="220" cy="30" r="1.3"/><circle cx="520" cy="50" r="1.2"/><circle cx="580" cy="110" r="1"/><circle cx="460" cy="24" r="1.5"/><circle cx="390" cy="70" r="1"/><circle cx="100" cy="130" r="1"/></g>
+        <circle cx="560" cy="64" r="16" fill="#f4f1e6"/>
+        <rect x="0" y="300" width="640" height="60" fill="#22304a"/>
+        <path d="M0 300h640" stroke="#e88a5a" stroke-width="2" opacity=".6"/>
+        <ellipse cx="320" cy="300" rx="190" ry="34" fill="url(#glow)"/>
+        <g fill="#e9e6df" opacity=".9"><circle cx="250" cy="292" r="26"/><circle cx="290" cy="300" r="30"/><circle cx="350" cy="300" r="30"/><circle cx="392" cy="292" r="24"/><circle cx="210" cy="300" r="18"/><circle cx="430" cy="300" r="18"/></g>
+        <rect x="380" y="120" width="16" height="180" fill="#8a2a1e"/><g stroke="#8a2a1e" stroke-width="2"><path d="M380 140l16 20M396 140l-16 20M380 180l16 20M396 180l-16 20M380 220l16 20M396 220l-16 20"/></g>
+        <path d="M320 240 q-14 30 0 64 q14 -34 0 -64z" fill="url(#glow)"/>
+        <g transform="translate(320 150)">
+          <path d="M-16 0h32v80h-32z" fill="#f4f4f2"/><path d="M-16 0q16 -46 32 0z" fill="#f4f4f2"/>
+          <rect x="-16" y="30" width="32" height="8" fill="#1d2840"/><rect x="-16" y="58" width="32" height="5" fill="#c0392b"/>
+          <path d="M-16 64l-12 22h12zM16 64l12 22h-12z" fill="#2f6fe0"/>
+          <circle cx="0" cy="12" r="5" fill="#1d4396"/>
+        </g>
+        <path d="M312 232l-6 30h28l-6 -30z" fill="#ffd27a"/>
+      </svg>
+      <div class="body">
+        <div class="kicker">3D 로켓 발사 시뮬레이터</div>
+        <h2>Ignition Sequence</h2>
+        <p class="desc">플로리다 케네디 우주센터 39A 발사장에서 로켓을 쏘아 올려요. 위성을 궤도에 올리거나, 유인 우주선으로 달에 착륙한 뒤 낙하산을 펴고 지구로 돌아오세요.</p>
+        <ul class="chips"><li>누리호 · 새턴 V · 소유즈</li><li>위성 궤도 투입</li><li>달 착륙</li><li>재진입 · 낙하산</li></ul>
+        <div class="actions">
+          <a class="btn play" href="https://hcstarrypark.github.io/ignition-sequence/"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>바로 플레이</a>
+          <a class="btn repo" href="https://github.com/hcstarrypark/ignition-sequence"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0z"/></svg>GitHub 저장소</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    <span>두 프로젝트 모두 컴퓨터의 최신 브라우저(Chrome 권장)에서 키보드와 마우스로 즐기기 좋아요.</span>
+    <a href="https://github.com/hcstarrypark">github.com/hcstarrypark</a>
+  </footer>
+</main>
+</body>
+</html>
